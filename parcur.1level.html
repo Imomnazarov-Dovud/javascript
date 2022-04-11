@@ -39,40 +39,6 @@
          ctx.textBaseline = "middle";
          ctxfillText("GAME OVER", width / 2, height / 2);
       };
-
-
-      var Position = function (x, y) {
-         this.x = x;
-         this.y = y;
-      }
-
-
-      var cicle = function (x, y, radius, fillCircle) {
-         ctx.beginPath();
-         ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-         if (fillCircle) {
-            ctx.fill();
-         } else {
-            ctx.stroke();
-         }
-      };
-
-
-      var drawCircle = function () {
-         var centerX = x;
-         var centerY = y;
-         ctx.fillStyle = "color";
-         circle(centerX, centerY, 5, true);
-      }
-      //монета
-      var Coin = function () {
-         this.coordinate = new Position(282, 175);
-      }
-
-
-      Coin.prototype.draw = function () {
-         drawCircle(this.coordinate, "Gold");
-      };
       //Людина
       //намалювати
       function Draw() {
@@ -115,7 +81,6 @@
          }
       }
       var person = new Draw;
-      var coin = new Coin;
 
       var keyActions = {
          37: "left",
@@ -132,7 +97,6 @@
          ctx.fillStyle = "Black";
          person.draw();
          person.move();
-         coin.draw();
          //карта
          var floor = ctx.fillStyle = "LimeGreen"; ctx.lineWidth = 4; ctx.fillRect(0, 312, 1300, 362);
       }, 30);
