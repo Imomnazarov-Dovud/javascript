@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>parcur</title>
+   <style>
+      body {
+         background-color: rgb(44, 235, 225);
+      }
+   </style>
+</head>
+
+<body>
+
+   <canvas id="canvas" width="1300" height="500"></canvas>
+
+   <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+   <script>
+      var click2 = function (event) {
+         console.log(event.pageX + " " + event.pageY);
+      };
+
+      $("html").click(click2);
+      //початок
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      //Налаштування
+
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+
+      var gameOver = function () {
+         clearInterval(intervalId);
+         ctx.font = "60px Caurier";
+         ctx.textAlign = "cener";
+         ctx.textBaseline = "middle";
+         ctxfillText("GAME OVER", width / 2, height / 2);
+      };
+
+
+      var Position = function (x, y) {
+         this.x = x;
+         this.y = y;
+      }
+
+
+      var cicle = function (x, y, radius, fillCircle) {
+         ctx.beginPath();
+         ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+         if (fillCircle) {
+            ctx.fill();
+         } else {
+            ctx.stroke();
+         }
+      };
+
+
+      var drawCircle = function () {
+         var centerX = x;
+         var centerY = y;
+         ctx.fillStyle = "color";
+         circle(centerX, centerY, 5, true);
+      }
+      //монета
+      var Coin = function () {
+         this.coordinate = new Position(282, 175);
+      }
+
+
+      Coin.prototype.draw = function () {
+         drawCircle(this.coordinate, "Gold");
+      };
+      //Людина
+      //намалювати
+      function Draw() {
+         this.x = 10;
+         this.y = 10;
+
+      }
+      Draw.prototype.draw = function () {
+         ctx.beginPath();
+         ctx.moveTo(this.x, this.y);
+         ctx.lineTo(this.x + 50, this.y);
+         ctx.lineTo(this.x + 50, this.y + 50);
+         ctx.lineTo(this.x, this.y + 50);
+         ctx.lineTo(this.x, this.y);
+         ctx.fill();
+      }
+      Draw.prototype.move = function () {
+         if (this.x < 0) {
+            this.x = 0;
+         } else if (this.x > 1250) {
+            this.x = 1250;
+         }
+         if (this.y < 0) {
+            this.y = 0;
+         } else if (this.y > 450) {
+            this.y = 450;
+         }
+
+         while (this.y < 260) {
+            this.y++;
+         }
+      }
+      Draw.prototype.setDirection = function (direction) {
+         if (direction === "left") {
+            this.x = this.x - 10;
+         } else if (direction === "right") {
+            this.x = this.x + 10;
+         } else if (direction === "up") {
+            this.y = this.y - 150;
+         }
+      }
+      var person = new Draw;
+      var coin = new Coin;
+
+      var keyActions = {
+         37: "left",
+         38: "up",
+         39: "right"
+      };
+      $("body").keydown(function (event) {
+         var direction = keyActions[event.keyCode];
+         person.setDirection(direction);
+      });
+
+      setInterval(function () {
+         ctx.clearRect(0, 0, 1300, 500);
+         ctx.fillStyle = "Black";
+         person.draw();
+         person.move();
+         coin.draw();
+         //карта
+         var floor = ctx.fillStyle = "LimeGreen"; ctx.lineWidth = 4; ctx.fillRect(0, 312, 1300, 362);
+      }, 30);
+
+   </script>
+</body>
+
+</html>
