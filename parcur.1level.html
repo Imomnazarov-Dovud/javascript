@@ -5,7 +5,7 @@
    <title>parcur</title>
    <style>
       body {
-         background-color: rgb(44, 235, 225);
+         background-color: rgb(62, 250, 241);
       }
    </style>
 </head>
@@ -17,6 +17,7 @@
    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
    <script>
+      //координати
       var click2 = function (event) {
          console.log(event.pageX + " " + event.pageY);
       };
@@ -39,6 +40,24 @@
          ctx.textBaseline = "middle";
          ctxfillText("GAME OVER", width / 2, height / 2);
       };
+
+
+      //монета
+
+      var color = "GoldenRod";
+      var coin = function (x, y, radius, fillCoin) {
+         ctx.fillStyle = color;
+         ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+         if (fillCoin) {
+            ctx.fill()
+         };
+         var coinPosition = function (x, y) {
+            this.x = x;
+            this.y = y;
+         }
+         coinPosition(this.x, this.y)
+      };
+
       //Людина
       //намалювати
       function Draw() {
@@ -92,8 +111,14 @@
          person.setDirection(direction);
       });
 
+
+      //зробити так щоб людина брала монету
+
+
+
       setInterval(function () {
          ctx.clearRect(0, 0, 1300, 500);
+         coin(272, 187, 25, true);
          ctx.fillStyle = "Black";
          person.draw();
          person.move();
