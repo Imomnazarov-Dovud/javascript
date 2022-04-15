@@ -85,10 +85,6 @@
          } else if (this.y > 450) {
             this.y = 450;
          }
-
-         while (this.y < 260) {
-            this.y++;
-         }
       }
       Draw.prototype.setDirection = function (direction) {
          if (direction === "left") {
@@ -97,6 +93,10 @@
             this.x = this.x + 10;
          } else if (direction === "up") {
             this.y = this.y - 150;
+         } else {
+            while (this.y < 260) {
+               this.y++;
+            }
          }
       }
       var person = new Draw;
