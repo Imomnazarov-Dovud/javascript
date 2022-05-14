@@ -63,15 +63,15 @@
       function Draw() {
          this.x = 10;
          this.y = 10;
-         var f = this.x;
-         var g = this.y;
       }
       Draw.prototype.draw = function () {
+         this.x2 = this.x + 50;
+         this.y2 = this.y + 50;
          ctx.beginPath();
          ctx.moveTo(this.x, this.y);
-         ctx.lineTo(this.x + 50, this.y);
-         ctx.lineTo(this.x + 50, this.y + 50);
-         ctx.lineTo(this.x, this.y + 50);
+         ctx.lineTo(this.x2, this.y);
+         ctx.lineTo(this.x2, this.y2);
+         ctx.lineTo(this.x, this.y2);
          ctx.lineTo(this.x, this.y);
          ctx.fill();
       }
@@ -86,6 +86,10 @@
          } else if (this.y > 450) {
             this.y = 450;
          }
+         if (this.x < 0 + c && this.x + this.y2 > )
+            while (this.y < 260) {
+               this.y++;
+            }
       }
       Draw.prototype.setDirection = function (direction) {
          if (direction === "left") {
@@ -94,10 +98,6 @@
             this.x = this.x + 10;
          } else if (direction === "up") {
             this.y = this.y - 150;
-         } else {
-            while (this.y < 260) {
-               this.y++;
-            }
          }
       }
       var person = new Draw;
@@ -115,7 +115,10 @@
 
       //зробити так щоб людина брала монету
 
-
+      var zero = 0;
+      var a = 312;
+      var b = 1300;
+      var c = 362;
 
       setInterval(function () {
          ctx.clearRect(0, 0, 1300, 500);
@@ -124,7 +127,9 @@
          person.draw();
          person.move();
          //карта
-         var floor = ctx.fillStyle = "LimeGreen"; ctx.lineWidth = 4; ctx.fillRect(0, 312, 1300, 362);
+         var floor = ctx.fillStyle = "LimeGreen";
+         ctx.lineWidth = 4;
+         ctx.fillRect(zero, a, b, c);
       }, 30);
 
    </script>

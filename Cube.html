@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Cube</title>
+
+
+   <style>
+      body {
+         background-color: rgb(62, 250, 241);
+      }
+
+      button {
+         border: 2px solid black;
+         margin: 200px 200px 200x 500px;
+         background-color: rgb(29, 22, 117);
+      }
+   </style>
+</head>
+
+<body>
+   <canvas id="canvas" width="1300" height="500"></canvas>
+
+
+   <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+
+   <script>
+      //координати
+      var click2 = function (event) {
+         console.log(event.pageX + " " + event.pageY);
+      };
+
+
+      $("html").click(click2);
+
+
+      //Налаштування
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+
+      var gameOver = function () {
+         clearInterval(intervalId);
+         ctx.font = "60px Caurier";
+         ctx.textAlign = "cener";
+         ctx.textBaseline = "middle";
+         ctxfillText("GAME OVER", width / 2, height / 2);
+      };
+
+
+      //куб
+      var Cube = function () {
+         this.x = 10;
+         this.y = 381;
+      };
+
+
+      Cube.prototype.draw = function (x, y) {
+         ctx.beginPath();
+         ctx.moveTo(this.x, this.y);
+         ctx.lineTo(this.x + 50, this.y);
+         ctx.lineTo(this.x + 50, this.y + 50);
+         ctx.lineTo(this.x, this.y + 50);
+         ctx.lineTo(this.x, this.y);
+         ctx.fill();
+      };
+
+
+      Cube.prototype.setdirection = function (direction) {
+         if (direction === "up") {
+            this.y = this.y - 60;
+            function plus(y) {
+               this.y = this.y + 60;
+            }
+            setTimeout(plus, 300);
+         }
+      }
+
+
+      //пираміда
+      var Piramide = function () {
+         this.x = 120;
+         this.y = 381;
+      };
+
+
+      Piramide.prototype.draw = function (x, y) {
+         ctx.beginPath();
+         ctx.moveTo(this.x, this.y);
+         ctx.lineTo(this.x + 25, this.y + 50);
+         ctx.lineTo(this.x - 25, this.y + 50);
+         ctx.lineTo(this.x, this.y);
+         ctx.fill()
+      };
+
+
+      Piramide.prototype.move = function () {
+         var active = true;
+         while (active) {
+            this.x--;
+            setTimeout(null, 10000)
+         };
+      };
+
+
+      var numbers = Math.floor(Math.random() * 3);
+
+
+      var piramide = new Piramide;
+      var cube = new Cube
+
+
+      var intervalId = setInterval(function () {
+         ctx.clearRect(0, 0, width, height);
+         cube.draw();
+         piramide.draw();
+      })
+   </script>
+</body>
+
+</html>
