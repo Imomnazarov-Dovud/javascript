@@ -25,6 +25,9 @@
    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
 
+   <script src="functiones.js"></script>
+
+
    <script>
       //координати
       var click2 = function (event) {
@@ -101,17 +104,25 @@
       var form = Math.floor(Math.random * 6);
 
 
-      var block = new Block(2, 2)
-      var first = function () {
-         var block = new Block(2, 2)
-         block.drawSquare()
+      if (form === 0) {
+         first()
+      } else if (form === 1) {
+         second()
+      } else if (form === 2) {
+         third()
+      } else if (form === 3) {
+         forth()
+      } else if (form === 4) {
+         fifeth()
+      } else if (form === 5) {
+         sixth()
       }
+
 
       var intervalId = setInterval(function () {
          ctx.clearRect(0, 0, width, height);
          drawBorder();
          drawScore();
-         first();
       }, 100)
    </script>
 
