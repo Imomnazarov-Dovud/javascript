@@ -88,6 +88,7 @@
       Block.prototype.drawSquare = function () {
          var x = this.col * blockSize;
          var y = this.row * blockSize;
+         ctx.fillStyle = "Black"
          ctx.fillRect(x, y, blockSize, blockSize);
       };
 
@@ -99,16 +100,18 @@
 
       var form = Math.floor(Math.random * 6);
 
-      var block = new Block()
+
+      var block = new Block(2, 2)
       var first = function () {
-         new Block(25, 1)
+         var block = new Block(2, 2)
          block.drawSquare()
       }
 
       var intervalId = setInterval(function () {
          ctx.clearRect(0, 0, width, height);
-         drawBorder()
+         drawBorder();
          drawScore();
+         first();
       }, 100)
    </script>
 
