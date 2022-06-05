@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<html>
+<head>
+   <title>Tetris</title>
 
-   <head>
-      <title>Tetrise</title>
-   </head>
 
-   <body>
-      <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+   <style>
+      body {
+         background-color: rgb(62, 250, 241);
+      }
 
-      <canvas id="canvas" width="1000" height="5000"></canvas>
+      button {
+         border: 2px solid black;
+         margin: 200px 200px 200x 500px;
+         background-color: rgb(29, 22, 117);
+      }
+   </style>
+</head>
 
-      <script>
-         var canvas = document.getElementById("canvas");
-         var ctx = canvas.getContext("2d");
+<body>
+   <canvas id="canvas" width="1300" height="500"></canvas>
 
-         
-      </script>
-   </body>
+
+   <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+
+   <script>
+      //координати
+      var click2 = function (event) {
+         console.log(event.pageX + " " + event.pageY);
+      };
+
+
+      $("html").click(click2);
+
+
+      //Налаштування
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+
+      var gameOver = function () {
+         clearInterval(intervalId);
+         ctx.font = "60px Caurier";
+         ctx.textAlign = "cener";
+         ctx.textBaseline = "middle";
+         ctxfillText("GAME OVER", width / 2, height / 2);
+      };
+   </script>
+
+</body>
 
 </html>
