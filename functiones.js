@@ -57,7 +57,7 @@ var sixth = function () {
    var block = new Block(20, 1)
    var block1 = new Block(20, 2)
    var block2 = new Block(21, 2)
-   var block3 = new Block(19, 3)
+   var block3 = new Block(21, 3)
    block.drawSquare()
    block1.drawSquare()
    block2.drawSquare()

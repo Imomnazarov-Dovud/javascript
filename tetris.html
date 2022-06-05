@@ -101,28 +101,44 @@
       };
 
 
-      var form = Math.floor(Math.random * 6);
+      var form = Math.floor(Math.random() * 6);
 
 
-      if (form === 0) {
-         first()
-      } else if (form === 1) {
-         second()
-      } else if (form === 2) {
-         third()
-      } else if (form === 3) {
-         forth()
-      } else if (form === 4) {
-         fifeth()
-      } else if (form === 5) {
-         sixth()
+      var Object = function () {
+         new Block(this.col, this.row)
       }
+
+
+      Object.prototype.draw = function () {
+         if (form === 0) {
+            first()
+         } else if (form === 1) {
+            second()
+         } else if (form === 2) {
+            third()
+         } else if (form === 3) {
+            forth()
+         } else if (form === 4) {
+            fifeth()
+         } else if (form === 5) {
+            sixth()
+         }
+      }
+
+
+      Object.prototype.move = function () {
+
+      }
+
+
+      var object = new Object
 
 
       var intervalId = setInterval(function () {
          ctx.clearRect(0, 0, width, height);
          drawBorder();
          drawScore();
+         object.draw()
       }, 100)
    </script>
 
