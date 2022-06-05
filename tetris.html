@@ -19,7 +19,7 @@
 </head>
 
 <body>
-   <canvas id="canvas" width="1300" height="500"></canvas>
+   <canvas id="canvas" width="400" height="645"></canvas>
 
 
    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
@@ -51,6 +51,65 @@
          ctx.textBaseline = "middle";
          ctxfillText("GAME OVER", width / 2, height / 2);
       };
+
+
+      var score = 0;
+
+
+      var drawScore = function () {
+         ctx.font = "60px Caurier";
+         ctx.fillStyle = "Black"
+         ctx.textAlign = "left";
+         ctx.textBaseline = "bottom";
+         ctx.fillText("Score: " + score, width - 200, height / 9);
+      }
+
+
+      var drawBorder = function () {
+         ctx.fillStyle = "Gray";
+         ctx.fillRect(0, 0, width, blockSize);
+         ctx.fillRect(0, height - blockSize, width, blockSize);
+         ctx.fillRect(0, 0, blockSize, height);
+         ctx.fillRect(width - blockSize, 0, blockSize, height);
+      };
+
+
+      var blockSize = 10;
+      var widthInBlocks = width / blockSize;
+      var heightInBlocks = height / blockSize;
+
+
+      var Block = function (col, row) {
+         this.col = col;
+         this.row = row;
+      };
+
+
+      Block.prototype.drawSquare = function () {
+         var x = this.col * blockSize;
+         var y = this.row * blockSize;
+         ctx.fillRect(x, y, blockSize, blockSize);
+      };
+
+
+      Block.prototype.equal = function (otherBlock) {
+         return this.col === otherBlock.col && this.row === otherBlock.row;
+      };
+
+
+      var form = Math.floor(Math.random * 6);
+
+      var block = new Block()
+      var first = function () {
+         new Block(25, 1)
+         block.drawSquare()
+      }
+
+      var intervalId = setInterval(function () {
+         ctx.clearRect(0, 0, width, height);
+         drawBorder()
+         drawScore();
+      }, 100)
    </script>
 
 </body>
