@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <title>parcur</title>
+      <style>
+         body {
+            background-color: rgb(62, 250, 241);
+         }
+      </style>
+   </head>
+
+   <body>
+
+
+      <div>
+         <button><a href="Parcur.html">&lt;</a></button>
+         <a id = "cool" href="Parcur.html"></a>
+      </div>
+   
+      <canvas id="canvas" width="1250" height="500"></canvas>
+   
+      <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+      <script src="game.js"></script>
+   
+      <script>
+      //монета
+
+         var x2;
+         var y2;
+
+         var color = true;
+         var numfers = 1;
+         var Coin = function () {
+            this.x = 460;
+            this.y = 162;
+            x2 = this.x;
+            y2 = this.y;
+         };
+
+
+         Coin.prototype.draw = function (x,y) {
+            if (color) {
+             ctx.fillStyle = "Yellow";
+             ctx.beginPath();
+             ctx.arc(this.x ,this.y ,25,0 ,Math.PI*2, false);
+             ctx.fill()
+             } else {
+               null;
+            }
+    
+         };
+
+
+         //карта
+         var Floor = function() {
+            this.x = 0;
+            this.y = 260;
+         };
+   
+   
+         Floor.prototype.draw = function() {
+            ctx.fillStyle = "Green";
+            ctx.fillRect(this.x, this.y, 1300, 500)
+         }
+   
+   
+         var person = new Draw;
+         var floor = new Floor;
+         var coin = new Coin;
+   
+         var keyActions = {
+            37: "left",
+            38: "up",
+            39: "right"
+         };
+         $("body").keydown(function (event) {
+            var direction = keyActions[event.keyCode];
+            person.setDirection(direction);
+         });
+         
+   
+         setInterval(function () {
+            ctx.clearRect(0, 0, 1300, 500);
+            drawScore()
+            coin.draw();
+            floor.draw()
+            ctx.fillStyle = "Black";
+            person.draw();
+            person.move();
+            takeCoin();
+         }, 30);
+         if (score === 1) {
+            <a href="file:///C:/Users/Kids-PC/Desktop/Dovud/IT/Parcur.html"></a>
+         }
+   
+      </script>
+   
+   
+   </body>
+
+</html>
